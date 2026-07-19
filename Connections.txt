@@ -1,0 +1,63 @@
+1. ADXL335 → Arduino Wiring (Critical)
+
+Your code reads:
+
+X = A0
+Y = A1
+Z = A2
+
+
+So wire it exactly like this:
+
+ADXL335 Pins → Arduino UNO
+ADXL335 Pin	Connect To	Notes
+VCC	3.3V	ADXL335 works on 3.3 is OK.
+GND	GND	Must share ground with Arduino.
+X	A0	Matches your code.
+Y	A1	Matches your code.
+Z	A2	Matches your code.
+ST (Self-test)	Leave unconnected	Do NOT connect this.
+
+📌 Do NOT use any resistor. The ADXL335 outputs analog voltage, not logic.
+
+✅ 2. LCD I2C (0x27) → Arduino Wiring
+
+Your code uses:
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+LCD I2C Pins → Arduino UN0
+LCD Pin	Connect To
+GND	GND
+VCC	5V
+SDA	A4
+SCL	A5
+
+📌 If LCD doesn’t turn on → your module brightness potentiometer may be too low.
+Turn the small blue knob until text appears.
+
+✅ 3. Buzzer → Arduino Wiring
+
+You used pin 2:
+
+#define buzzer 2
+
+Passive or Active Buzzer Wiring
+Buzzer Pin	Arduino
++	D2
+-	GND
+
+📌 If your buzzer has no markings, the longer pin = +.
+
+✅ 4. LED → Arduino Wiring
+
+You used pin 3:
+
+#define led 3
+
+LED Wiring
+LED Pin	Connect To
+Long leg (Anode)	D3
+Short leg (Cathode)	GND through a 220Ω resistor
+
+📌 LED must have a resistor, or it will burn.
